@@ -17,19 +17,12 @@ import java.io.IOException;
  * Created by asy
  */
 
-@ManagedBean
+@ManagedBean(name = "loginManager")
 @RequestScoped
 public class LoginManager {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginManager.class);
 
-    public String doLogin() throws IOException, ServletException {
-        logger.debug("login");
-        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/login");
-        dispatcher.forward((ServletRequest) context.getRequest(), (ServletResponse) context.getResponse());
-        FacesContext.getCurrentInstance().responseComplete();
-        return null;
-    }
+
 
 }

@@ -12,23 +12,26 @@
 </h:head>
 
 <h:body>
-   <h:outputLabel value="user:pass, admin:pass"/>
+   <h:outputLabel value="user/pass, admin/pass"/>
 
-   <h:form>
-      <p:outputLabel value="Name : " for="username"></p:outputLabel>
-      <p:inputText value="Text" id="username"></p:inputText>
+      <h:form prependId="false">
+         <p:outputLabel value="Name : " for="username"></p:outputLabel>
+         <p:inputText id="username"></p:inputText>
 
-      <br/>
+         <br/>
 
-      <p:outputLabel value="Surname : " for="password"></p:outputLabel>
-      <p:password value="" id="password"/>
+         <p:outputLabel value="Surname : " for="password"></p:outputLabel>
+         <p:password id="password"/>
 
-      <br/>
+         <br/>
+         <p:commandButton value="OK" action="#{loginManager.doLogin}"  ajax="false"/>
 
-      <p:commandButton value="OK" action="${loginManager.doLogin()}"/>
-      <h:commandButton type="submit" value="OK" action="${loginManager.doLogin()}" />
 
-   </h:form>
+
+      </h:form>
+
+
+
 </h:body>
 
 
