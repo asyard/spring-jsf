@@ -11,6 +11,8 @@
     </h:head>
 
     <h:body>
+        <p:link href="./menu.xhtml" value="Menu"></p:link>
+        <br/>
         <h:outputLabel value="Booklist"/>
         <h:form>
             <p:dataTable var="book" value="#{bookManager.books}" paginator="true" rows="10"    rowKey="#{book.name}"
@@ -29,9 +31,26 @@
             </p:dataTable>
 
             <p:contextMenu for="bookTable">
-                <p:menuitem value="View"  icon="ui-icon-search" oncomplete="PF('bookDialog').show()"/>
-                <p:menuitem value="Delete" icon="ui-icon-close" actionListener="#{bookManager.deleteCar}"/>
+                <p:menuitem value="View"  update="bookDetail" icon="ui-icon-search" oncomplete="PF('bookDialog').show()"/>
+                <p:menuitem value="Delete" update="bookTable" icon="ui-icon-close" actionListener="#{bookManager.deleteBook}"/>
             </p:contextMenu>
+
+
+            <p:dialog header="Book Info" widgetVar="bookDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="bookDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty bookManager.selectedBook}" columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <h:outputText value="#{bookManager.selectedBook.name}" />
+
+                        <h:outputText value="Author:" />
+                        <h:outputText value="#{bookManager.selectedBook.author}"/>
+
+                        <h:outputText value="Year" />
+                        <h:outputText value="#{bookManager.selectedBook.year}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
         </h:form>
     </h:body>
 

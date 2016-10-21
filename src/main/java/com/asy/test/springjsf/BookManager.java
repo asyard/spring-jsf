@@ -1,6 +1,8 @@
 package com.asy.test.springjsf;
 
 import com.asy.test.springjsf.model.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +17,8 @@ import java.util.List;
 @ManagedBean(name = "bookManager")
 @RequestScoped
 public class BookManager {
+
+    private static final Logger logger = LoggerFactory.getLogger(BookManager.class);
 
     private String name;
     private List<Book> books;
@@ -61,5 +65,10 @@ public class BookManager {
         this.selectedBook = selectedBook;
     }
 
+    public void deleteBook() {
+        logger.debug("Deleting book : " + selectedBook);
+        books.remove(selectedBook);
+        selectedBook = null;
+    }
 
 }

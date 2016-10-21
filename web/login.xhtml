@@ -12,6 +12,11 @@
 </h:head>
 
 <h:body>
+
+   <p:panel rendered="#{not empty loginManager.loggedInUser and loginManager.loggedInUser ne 'anonymousUser'}">
+          You are already logged in as : #{loginManager.loggedInUser}
+   </p:panel>
+
    <h:outputLabel value="user/pass, admin/pass"/>
 
       <h:form prependId="false">
@@ -24,13 +29,9 @@
          <p:password id="password"/>
 
          <br/>
-         <p:commandButton value="OK" action="#{loginManager.doLogin}"  ajax="false"/>
-
-
+         <p:commandButton value="OK" ajax="false"/>
 
       </h:form>
-
-
 
 </h:body>
 
