@@ -18,6 +18,12 @@
     <h:form prependId="false">
         <p:outputLabel value="Name"></p:outputLabel>
         <p:inputText value="#{bookManager.name}"></p:inputText>
+        <br/>
+        <p:outputLabel value="Author"></p:outputLabel>
+        <p:inputText value="#{bookManager.author}"></p:inputText>
+        <br/>
+        <p:outputLabel value="Year"></p:outputLabel>
+        <p:inputText value="#{bookManager.year}"></p:inputText>
 
         <p:commandButton value="add" action="#{bookManager.doSave}"/>
 

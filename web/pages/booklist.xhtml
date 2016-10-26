@@ -31,6 +31,7 @@
             </p:dataTable>
 
             <p:contextMenu for="bookTable">
+                <p:menuitem value="Add New" update="bookTable" icon="ui-icon-add" oncomplete="PF('bookAddDialog').show()"/>
                 <p:menuitem value="View"  update="bookDetail" icon="ui-icon-search" oncomplete="PF('bookDialog').show()"/>
                 <p:menuitem value="Delete" update="bookTable" icon="ui-icon-close" actionListener="#{bookManager.deleteBook}"/>
             </p:contextMenu>
@@ -47,6 +48,27 @@
 
                         <h:outputText value="Year" />
                         <h:outputText value="#{bookManager.selectedBook.year}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+
+
+
+            <p:dialog header="New Book" widgetVar="bookAddDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="bookAdd" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <p:inputText value="#{bookManager.name}"></p:inputText>
+
+                        <h:outputText value="Author:" />
+                        <p:inputText value="#{bookManager.author}"></p:inputText>
+
+                        <h:outputText value="Year" />
+                        <p:inputText value="#{bookManager.year}"></p:inputText>
+
+                        <p:commandButton update="bookTable" value="add" action="#{bookManager.saveAndClose}"/>
+
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
