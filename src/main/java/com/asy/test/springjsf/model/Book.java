@@ -9,6 +9,9 @@ public class Book {
     private String author;
     private int year;
 
+    public Book() {     // default constructor added for jsf table filter.
+    }
+
     public Book(String name, String author, int year) {
         this.name = name;
         this.author = author;
