@@ -1,6 +1,8 @@
 package com.asy.test.springjsf.model;
 
 /**
+ * Book modal
+ *
  * Created by asy
  */
 public class Book {
